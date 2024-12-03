@@ -1,6 +1,6 @@
 import { assertEquals } from "@std/assert";
-import { add } from "./main.ts";
+import { mul } from "./main.ts";
 
 Deno.test(function addTest() {
-  assertEquals(add(2, 3), 5);
+  assertEquals(mul("xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))",), 161);
 });
