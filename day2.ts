@@ -1,16 +1,16 @@
 export function safeReports(str: string): boolean {
   const reports = str.split(" ").map(Number);
-  let ascending: Boolean | null = null
+  let ascending: Boolean | null = null;
   for (let i = 0; i < reports.length; i++) {
     if (i === 0) {
-      continue
+      continue;
     }
 
-    const cur = reports[i]
-    const pre = reports[i - 1]
+    const cur = reports[i];
+    const pre = reports[i - 1];
 
     if (ascending === null) {
-      ascending = cur > pre
+      ascending = cur > pre;
     }
 
     if (
@@ -19,11 +19,11 @@ export function safeReports(str: string): boolean {
       (cur === pre) ||
       (Math.abs(cur - pre) > 3)
     ) {
-      return false
+      return false;
     }
   }
 
-    return true
+  return true;
 }
 
 if (import.meta.main) {
