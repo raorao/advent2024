@@ -1,26 +1,28 @@
 export function safeReports(str: string): boolean {
   const reports = str.split(" ").map(Number);
-  let ascending: Boolean | null = null;
-  for (let i = 0; i < reports.length; i++) {
-    if (i === 0) {
+  let ascending: boolean | null = null;
+  let prev: number | null = null;
+
+  for (const cur of reports) {
+    if (prev === null) {
+      prev = cur;
       continue;
     }
 
-    const cur = reports[i];
-    const pre = reports[i - 1];
-
     if (ascending === null) {
-      ascending = cur > pre;
+      ascending = cur > prev;
     }
 
     if (
-      (ascending && cur < pre) ||
-      (!ascending && cur > pre) ||
-      (cur === pre) ||
-      (Math.abs(cur - pre) > 3)
+      (ascending && cur < prev) ||
+      (!ascending && cur > prev) ||
+      (cur === prev) ||
+      (Math.abs(cur - prev) > 3)
     ) {
       return false;
     }
+
+    prev = cur;
   }
 
   return true;
